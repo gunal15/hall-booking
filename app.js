@@ -40,7 +40,7 @@ const rooms=[
 app.get('/', function(req, res, next) {
     res.send('Server running successfully🎉🎉');
   });
-//create room
+
 app.post("/createRoom",(req,res)=>{
 
     rooms.push({
@@ -56,7 +56,6 @@ res.send("Room Created")
 
 
 
-//Book rooms
 app.post("/bookRoom",(req,res,next)=>{
 for(let i=0;i<rooms.length;i++)
 {
@@ -80,13 +79,13 @@ for(let i=0;i<rooms.length;i++)
             {
                 result=0
                 console.log("in booking")
-                //  return res.status(400).send({error:"Please select different time slot"})
+               
                   
             }
             else{
                 result=1
                 rooms[i].bookingDetails.push(booking)
-                // return res.status(200).send("Booking confirmed")
+             
             }
         })
         if(result)
@@ -99,7 +98,6 @@ for(let i=0;i<rooms.length;i++)
 }
 })
 
-//List the customers
 
 app.get("/listCustomer",(req,res)=>{
 
@@ -122,7 +120,6 @@ app.get("/listCustomer",(req,res)=>{
     
     })
 
-//List room along with booking details
 
 app.get("/listRooms",(req,res)=>{
     res.send(rooms)
